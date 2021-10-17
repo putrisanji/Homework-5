@@ -38,7 +38,7 @@ const TransaksiPage = () => {
     kecamatan_customer: " ",
     alamat_lengkap: " ",
     nominal_transaksi: "",
-    status: "0",
+    status: 0,
   })
 
   const { mutate, isLoading, isError } = useCreateTransaction(

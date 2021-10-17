@@ -1,16 +1,22 @@
-import React, { useState, useMemo } from "react"
+import React, { useState, useMemo,useCallback } from "react"
 import { Row, Form, Input, Button, Select, Col, Typography } from "antd"
+import { useHistory } from "react-router-dom"
+
 
 import DataAlamat from "../Transaksi/DataAlamat"
+import { useAuthorizedContext } from "../../AuthorizedContext"
 import "./Register.css"
 
 const { Option } = Select
 const { Title} = Typography
 
 const RegisterAgen = () => {
+  const history = useHistory()
   const [selectedProvinsi, setSelectedProvinsi] = useState(null)
   const [selectedKabupaten, setSelectedKabupaten] = useState(null)
   const [selectedKecamatan, setSelectedKecamatan] = useState(null)
+  const { setAuthorizedValue } = useAuthorizedContext()
+
   const handleSelectedProvinsi = (value) => {
     setSelectedProvinsi(value)
   }
@@ -36,6 +42,12 @@ const RegisterAgen = () => {
         ?.kecamatan || []
     )
   }, [selectedKabupaten, dataKabupaten])
+
+  const handleRegisterAgenBtn = useCallback(() => {
+    setAuthorizedValue(true)
+    history.push("/home")
+  }, [setAuthorizedValue, history])
+
   return (
     <div className="outer-register">
       <div className="inner-register">
@@ -197,7 +209,7 @@ const RegisterAgen = () => {
                 justifyContent: "center",
               }}
             >
-              <Button className="btn-registerAgenCustomer">Register Agen</Button>
+              <Button className="btn-registerAgenCustomer" onClick={handleRegisterAgenBtn}>Register Agen</Button>
             </Col>
           </Form.Item>
         </Form>

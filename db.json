@@ -33,7 +33,7 @@
       "kecamatan_customer": "Kudus",
       "alamat_lengkap": "fffgghhh",
       "nominal_transaksi": 11111,
-      "status": "0",
+      "status": 1,
       "id": 1
     },
     {
@@ -44,7 +44,7 @@
       "kecamatan_customer": "Buahbatu",
       "alamat_lengkap": "Jl. telekomunikasi No. 1",
       "nominal_transaksi": 10000000,
-      "status": "0",
+      "status": 0,
       "id": 2
     }
   ]

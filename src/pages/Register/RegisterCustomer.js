@@ -1,12 +1,22 @@
-import React from "react"
+import React, {useCallback} from "react"
 import { Form, Input, Button, Col, Typography } from "antd"
+import { useHistory } from "react-router-dom"
 
+import { useAuthorizedContext } from "../../AuthorizedContext"
 import "./Register.css"
 
 const { Title } = Typography
 
 const RegisterCustomer = () => {
-  return (
+  const history = useHistory()
+  const { setAuthorizedValue } = useAuthorizedContext()
+
+  const handleRegisterCustomerBtn = useCallback(() => {
+    setAuthorizedValue(true)
+    history.push("/home")
+  }, [setAuthorizedValue, history])
+
+  return ( 
     <div className="outer-login">
       <div className="inner-login">
         <div className="logo" style={{ marginTop: '0', marginBottom: "45px" }}>
@@ -71,6 +81,18 @@ const RegisterCustomer = () => {
           >
             <Input type="password" placeholder="Password" name="password" />
           </Form.Item>
+          <Form.Item
+            name="konfirmasi-password"
+            label="Konfirmasi Password"
+            rules={[
+              {
+                required: true,
+                message: "Please input your Password!",
+              },
+            ]}
+          >
+            <Input type="password" placeholder="Ulangi Password" name="password" />
+          </Form.Item>
           <Form.Item>
             <Col
               span={12}
@@ -80,7 +102,7 @@ const RegisterCustomer = () => {
                 justifyContent: "center",
               }}
             >
-              <Button className="btn-registerAgenCustomer">Register Customer</Button>
+              <Button className="btn-registerAgenCustomer" onClick={handleRegisterCustomerBtn}>Register Customer</Button>
             </Col>
           </Form.Item>
         </Form>

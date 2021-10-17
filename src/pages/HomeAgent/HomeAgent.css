@@ -1,0 +1,22 @@
+.resume {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+Form {
+  margin-left: 20px;
+}
+
+.title {
+  margin: 20px 0px 60px 0px;
+  text-align: center;
+}
+
+.float-right {
+  margin-top: 24px;
+}
+/*# sourceMappingURL=HomeAgent.css.map */
